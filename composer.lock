@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "38291c737666ddcd6d39d21f9394ef33",
-    "content-hash": "4ba243708f2996f3e00c5084d38652a1",
+    "hash": "445a29d1f7b634b0f5ff4b41caa168d4",
+    "content-hash": "322725976a10549eb7cdae54d223538c",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -33,6 +33,47 @@
             ],
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
             "time": "2014-12-30 15:22:37"
+        },
+        {
+            "name": "leancloud/leancloud-sdk",
+            "version": "v0.3.0-alpha",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/leancloud/php-sdk.git",
+                "reference": "6dd1265ace01e0e0e287706187870aea78056f42"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/leancloud/php-sdk/zipball/6dd1265ace01e0e0e287706187870aea78056f42",
+                "reference": "6dd1265ace01e0e0e287706187870aea78056f42",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*"
+            },
+            "require-dev": {
+                "apigen/apigen": "^4.1",
+                "phpunit/phpunit": "^4.8"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LeanCloud\\": "src/LeanCloud"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Juvenn Woo",
+                    "email": "yun.wu@leancloud.rocks"
+                }
+            ],
+            "description": "LeanCloud PHP SDK",
+            "homepage": "https://github.com/leancloud/php-sdk",
+            "keywords": [
+                "leancloud"
+            ],
+            "time": "2015-12-23 09:38:33"
         },
         {
             "name": "monolog/monolog",
@@ -407,7 +448,9 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "leancloud/leancloud-sdk": 15
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
