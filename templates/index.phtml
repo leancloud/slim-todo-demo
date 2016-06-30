@@ -1,37 +1,75 @@
+<!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8"/>
-        <title>Slim 3</title>
-        <link href='//fonts.googleapis.com/css?family=Lato:300' rel='stylesheet' type='text/css'>
-        <style>
-            body {
-                margin: 50px 0 0 0;
-                padding: 0;
-                width: 100%;
-                font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-                text-align: center;
-                color: #aaa;
-                font-size: 18px;
-            }
-
-            h1 {
-                color: #719e40;
-                letter-spacing: -3px;
-                font-family: 'Lato', sans-serif;
-                font-size: 100px;
-                font-weight: 200;
-                margin-bottom: 0;
-            }
-        </style>
+        <title>LeanEngine Slim 3 TODO Demo</title>
+        <link href='/stylesheets/bootstrap.min.css' rel='stylesheet' type='text/css'>
+        <link href='/stylesheets/style.css' rel='stylesheet' type='text/css'>
     </head>
     <body>
-        <h1>Slim</h1>
-        <div>a microframework for PHP</div>
+        <?php include 'nav.phtml' ?>
+        <div class="container">
+            <h1>LeanEngine Slim TODO Demo</h1>
+                <?php if(isset($error)): ?>
+                <div class="alert alert-danger" role="alert">
+                    <strong>登录失败：</strong><?= htmlspecialchars($error->getMessage()) ?>
+                </div>
+                <?php endif; ?>
+            <div id="createTodo">
+                <form action="/todo" method="POST">
+                    <div class="form-group">
+                        <input name="content" class="form-control" type="input">
+                    <div class="form-group">
+                    </div>
+                        <input value="新增" class="btn btn-default" type="submit">
+                    </div>
+                </form>
+            </div>
 
-        <?php if (isset($name)) : ?>
-            <h2>Hello <?= htmlspecialchars($name); ?>!</h2>
-        <?php else: ?>
-            <p>Try <a href="/SlimFramework">/SlimFramework</a>
-        <?php endif; ?>
+            <ul class="nav nav-tabs">
+                <li role="presentation" <?php if($status != 1) : ?>class="active"<?php endif ?>><a href="/?status=0">未完成</a></li>
+                <li role="presentation" <?php if($status == 1) : ?>class="active"<?php endif ?>><a href="/?status=1">已完成</a></li>
+            </ul>
+
+
+            <table class="table">
+                <thead></thead>
+                <colgroup>
+                    <col class="col-xs-10">
+                    <col class="col-xs-1">
+                    <col class="col-xs-1">
+                </colgroup>
+                <tbody>
+                    <tr>
+                        <th>描述</th>
+                        <th>标签</th>
+                        <th>所有者</th>
+                        <th>操作</th>
+                    </tr>
+                    <?php foreach($todos as $todo): ?>
+                    <tr>
+                        <td>
+                            <form action="/todo/<?= $todo->getObjectId() ?>/done" method="POST">
+                                <div class="checkbox">
+                                    <label>
+                                        <input onclick="submit()" type="checkbox" <?php if ($todo->get('done') === true) { echo "checked"; } ?>>
+                                        <?= htmlspecialchars($todo->get('content')) ?>
+                                    </label>
+                                </div>
+                            </form>
+                        </td>
+                        <td></td>
+                        <td>
+                            <?= htmlspecialchars(is_null($todo->get('owner')) ? "" : $todo->get('owner')->getUsername()) ?>
+                        </td>
+                        <td>
+                        <form action="/todo/<?= $todo->getObjectId() ?>/remove" method="POST"><input value="删除" class="btn btn-default" type="submit"></form>
+                        </td>
+                    </tr>
+                    <?php endforeach ?>
+                </tbody>
+            </table>
+
+        </div>
     </body>
 </html>

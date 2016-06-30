@@ -1,0 +1,21 @@
+        <nav role="navigation" class="navbar navbar-default navbar-static-top">
+            <div class="container">
+                <div class="navbar-header">
+                <a href="/" class="navbar-brand">云代码 Demo</a>
+                </div>
+                <div id="bs-example-navbar-collapse-1" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li><a href="/">TODO 列表</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <?php if (isset($user)): ?>
+                        <li><a href="javascript:;"><?= $user->get('username') ?></a></li>
+                        <li><a href="/logout">登出</a></li>
+                        <?php else: ?>
+                        <li><a href="/login">登录</a></li>
+                        <li><a href="/register">注册</a></li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </div>
+        </nav>
