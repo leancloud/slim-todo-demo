@@ -3,9 +3,9 @@
 
 ### Run the application in development
 
-```php
+```bash
 composer install
-lean app add <your app id> <your app key>
+lean checkout
 lean up
-// open http://localhost:3000 in your browser
+# open http://localhost:3000 in your browser
 ```
