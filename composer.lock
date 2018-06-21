@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "021391a0b47c5d587f38231c9026cefc",
+    "content-hash": "59bb69ffa1e43eb78707d26220bb720e",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -35,24 +35,26 @@
         },
         {
             "name": "leancloud/leancloud-sdk",
-            "version": "v0.7.0",
+            "version": "v0.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/leancloud/php-sdk.git",
-                "reference": "a07b2a0e7355e50cef3a150921ebcc4453c63a3a"
+                "reference": "14880aacd7b621a4bbd20bed7d0890be78dd570b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://files.phpcomposer.com/files/leancloud/php-sdk/a07b2a0e7355e50cef3a150921ebcc4453c63a3a.zip",
-                "reference": "a07b2a0e7355e50cef3a150921ebcc4453c63a3a",
+                "url": "https://files.phpcomposer.com/files/leancloud/php-sdk/14880aacd7b621a4bbd20bed7d0890be78dd570b.zip",
+                "reference": "14880aacd7b621a4bbd20bed7d0890be78dd570b",
                 "shasum": ""
             },
             "require": {
-                "ext-curl": "*"
+                "ext-curl": "*",
+                "php": ">=5.6"
             },
             "require-dev": {
                 "apigen/apigen": "^4.1",
-                "phpunit/phpunit": "^4.8"
+                "doctrine/instantiator": "<1.1.0",
+                "phpunit/phpunit": "^5.7"
             },
             "type": "library",
             "autoload": {
@@ -72,7 +74,7 @@
             "keywords": [
                 "leancloud"
             ],
-            "time": "2018-03-19T08:25:25+00:00"
+            "time": "2018-06-21T06:22:29+00:00"
         },
         {
             "name": "nikic/fast-route",
@@ -339,7 +341,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=5.5.0"
+        "php": ">=5.6.0"
     },
     "platform-dev": []
 }
