@@ -5,7 +5,7 @@
 
 ```bash
 composer install
-lean checkout
+lean switch
 lean up
 # open http://localhost:3000 in your browser
 ```

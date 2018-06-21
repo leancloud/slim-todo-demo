@@ -1,17 +1,17 @@
 <?php
 // Application middleware
 
-use \LeanCloud\LeanClient;
+use \LeanCloud\Client;
 use \LeanCloud\Storage\CookieStorage;
 use \LeanCloud\Engine\SlimEngine;
 
-LeanClient::initialize(
+Client::initialize(
     getenv("LEANCLOUD_APP_ID"),
     getenv("LEANCLOUD_APP_KEY"),
     getenv("LEANCLOUD_APP_MASTER_KEY")
 );
 
-LeanClient::useMasterKey(false);
-LeanClient::setStorage(new CookieStorage());
+Client::useMasterKey(false);
+Client::setStorage(new CookieStorage());
 SlimEngine::enableHttpsRedirect();
 $app->add(new SlimEngine());

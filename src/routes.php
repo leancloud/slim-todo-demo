@@ -4,9 +4,9 @@
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Psr\Http\Message\ResponseInterface as Response;
 use LeanCloud\LeanObject;
-use LeanCloud\LeanQuery;
-use LeanCloud\LeanUser;
-use LeanCloud\LeanACL;
+use LeanCloud\Query;
+use LeanCloud\User;
+use LeanCloud\ACL;
 
 $app->get('/', function(Request $request, Response $response) {
     if (!array_key_exists('status', $request->getQueryParams())) {
@@ -14,9 +14,9 @@ $app->get('/', function(Request $request, Response $response) {
     } else {
         $status = $request->getQueryParams()['status'];
     }
-    $user = LeanUser::getCurrentUser();
+    $user = User::getCurrentUser();
 
-    $query = new LeanQuery('Todo');
+    $query = new Query('Todo');
     $query->limit(20)->addDescend('createdAt')->_include('owner');
     if ($status === '0') {
         $query->equalTo('done', false);
@@ -34,7 +34,7 @@ $app->get('/', function(Request $request, Response $response) {
 
 $app->post('/todo', function(Request $request, Response $response) {
     $data = $request->getParsedBody();
-    $user = LeanUser::getCurrentUser();
+    $user = User::getCurrentUser();
     if ($user === null) {
       return $response->withstatus(302)->withheader('location', '/login');
     }
@@ -42,7 +42,7 @@ $app->post('/todo', function(Request $request, Response $response) {
     $obj->set('content', $data['content']);
     $obj->set('done', false);
     $obj->set('owner', $user);
-    $acl = new LeanACL($user);
+    $acl = new ACL($user);
     $obj->setACL($acl);
     try {
         $obj->save();
@@ -54,7 +54,7 @@ $app->post('/todo', function(Request $request, Response $response) {
 
 $app->post('/todo/{objId}/done', function(Request $request, Response $response) {
     $objId = $request->getAttribute('objId');
-    $query = new LeanQuery('Todo');
+    $query = new Query('Todo');
     $todo = $query->get($objId);
     $todo->set('done', true);
     $todo->save();
@@ -63,7 +63,7 @@ $app->post('/todo/{objId}/done', function(Request $request, Response $response) 
 
 $app->post('/todo/{objId}/remove', function(Request $request, Response $response) {
     $objId = $request->getAttribute('objId');
-    $query = new LeanQuery('Todo');
+    $query = new Query('Todo');
     $todo = $query->get($objId);
     $todo->destroy();
     return $response->withStatus(302)->withHeader('Location', '/');
@@ -76,7 +76,7 @@ $app->get('/login', function(Request $request, Response $response) {
 $app->post('/login', function(Request $request, Response $response) {
     $data = $request->getParsedBody();
     try {
-        LeanUser::logIn($data['name'], $data['password']);
+        User::logIn($data['name'], $data['password']);
     } catch (\Leancloud\CloudException $e) {
         return $this->renderer->render($response, 'login.phtml', ['error' => $e]);
     }
@@ -84,7 +84,7 @@ $app->post('/login', function(Request $request, Response $response) {
 });
 
 $app->get('/logout', function(Request $request, Response $response) {
-    $user = LeanUser::getCurrentUser();
+    $user = User::getCurrentUser();
     if (!is_null($user)) {
         $user->logOut();
     }
@@ -97,7 +97,7 @@ $app->get('/register', function(Request $request, Response $response) {
 
 $app->post('/register', function(Request $request, Response $response) {
     $data = $request->getParsedBody();
-    $user = new LeanUser();
+    $user = new User();
     $user->setUsername($data['name']);
     $user->setPassword($data['password']);
     try {

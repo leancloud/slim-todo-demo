@@ -1,11 +1,10 @@
 {
     "_readme": [
         "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "hash": "ca1ffe6147776c111d071d17526cbdb0",
-    "content-hash": "0331ae4e342aae2dd90d3c54a96324d0",
+    "content-hash": "021391a0b47c5d587f38231c9026cefc",
     "packages": [
         {
             "name": "container-interop/container-interop",
@@ -32,20 +31,20 @@
                 "MIT"
             ],
             "description": "Promoting the interoperability of container objects (DIC, SL, etc.)",
-            "time": "2014-12-30 15:22:37"
+            "time": "2014-12-30T15:22:37+00:00"
         },
         {
             "name": "leancloud/leancloud-sdk",
-            "version": "v0.3.0-alpha.2",
+            "version": "v0.7.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/leancloud/php-sdk.git",
-                "reference": "49aa316914a287bec003a2d38342204ebdd14056"
+                "reference": "a07b2a0e7355e50cef3a150921ebcc4453c63a3a"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://packagist.phpcomposer.com/files/leancloud/php-sdk/49aa316914a287bec003a2d38342204ebdd14056.zip",
-                "reference": "49aa316914a287bec003a2d38342204ebdd14056",
+                "url": "https://files.phpcomposer.com/files/leancloud/php-sdk/a07b2a0e7355e50cef3a150921ebcc4453c63a3a.zip",
+                "reference": "a07b2a0e7355e50cef3a150921ebcc4453c63a3a",
                 "shasum": ""
             },
             "require": {
@@ -73,7 +72,7 @@
             "keywords": [
                 "leancloud"
             ],
-            "time": "2016-06-29 05:42:25"
+            "time": "2018-03-19T08:25:25+00:00"
         },
         {
             "name": "nikic/fast-route",
@@ -116,7 +115,7 @@
                 "router",
                 "routing"
             ],
-            "time": "2016-06-12 19:08:51"
+            "time": "2016-06-12T19:08:51+00:00"
         },
         {
             "name": "pimple/pimple",
@@ -162,7 +161,7 @@
                 "container",
                 "dependency injection"
             ],
-            "time": "2015-09-11 15:10:35"
+            "time": "2015-09-11T15:10:35+00:00"
         },
         {
             "name": "psr/http-message",
@@ -211,7 +210,7 @@
                 "request",
                 "response"
             ],
-            "time": "2015-05-04 20:22:00"
+            "time": "2015-05-04T20:22:00+00:00"
         },
         {
             "name": "slim/php-view",
@@ -260,7 +259,7 @@
                 "template",
                 "view"
             ],
-            "time": "2016-03-04 09:48:50"
+            "time": "2016-03-04T09:48:50+00:00"
         },
         {
             "name": "slim/slim",
@@ -330,15 +329,13 @@
                 "micro",
                 "router"
             ],
-            "time": "2016-05-25 11:23:38"
+            "time": "2016-05-25T11:23:38+00:00"
         }
     ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {
-        "leancloud/leancloud-sdk": 15
-    },
+    "stability-flags": [],
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
