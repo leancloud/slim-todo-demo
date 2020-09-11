@@ -12,10 +12,10 @@
         }
     ],
     "require": {
-        "php": "7.2.x",
-        "slim/slim": "^3.1",
+        "php": "7.4.x",
+        "slim/slim": "^3.12.3",
         "slim/php-view": "^2.0",
-        "leancloud/leancloud-sdk": "^0.8.0"
+        "leancloud/leancloud-sdk": "^0.13.0"
     },
     "repositories": {
         "packagist": {
